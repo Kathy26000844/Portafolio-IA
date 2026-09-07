@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio Digital — Katherine Itzep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blush:#FBF1EE;
+    --pink:#F0C7D6;
+    --rose:#B9647D;
+    --gold:#AD8A52;
+    --ink:#3B2530;
+    --paper:#FFFCFA;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--blush);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    color:var(--ink);
+  }
+  em{
+    font-style:italic;
+    color:var(--rose);
+  }
+  a{color:inherit;}
+  .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,241,238,0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(59,37,48,0.12);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size:1.2rem;
+    letter-spacing:0.02em;
+  }
+  .logo span{color:var(--rose); font-style:italic;}
+  nav ul{
+    list-style:none;
+    display:flex; gap:28px;
+    font-size:0.88rem;
+  }
+  nav ul a{
+    text-decoration:none;
+    padding-bottom:3px;
+    border-bottom:1px solid transparent;
+    transition:border-color .25s ease;
+  }
+  nav ul a:hover{border-color:var(--gold);}
+  .nav-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:96px 0 60px;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:40px;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    font-size:0.82rem;
+    color:var(--rose);
+    letter-spacing:0.04em;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    line-height:1.08;
+    margin-bottom:22px;
+  }
+  .hero p.lead{
+    font-size:1.05rem;
+    max-width:46ch;
+    color:rgba(59,37,48,0.85);
+    margin-bottom:8px;
+  }
+  .hero .byline{
+    margin-top:28px;
+    font-size:0.9rem;
+    color:var(--rose);
+  }
+  .hero-visual{
+    position:relative;
+    justify-self:end;
+    width:100%;
+  }
+  .hero-visual img{
+    width:110%;
+    max-width:520px;
+    display:block;
+    margin-left:auto;
+    filter:drop-shadow(0 30px 45px rgba(173,138,82,0.28));
+  }
+  .hero-visual .tag{
+    position:absolute;
+    bottom:18px;
+    left:-10px;
+    background:var(--paper);
+    border:1px solid rgba(173,138,82,0.35);
+    padding:10px 16px;
+    font-size:0.78rem;
+    color:var(--rose);
+    max-width:190px;
+    box-shadow:0 10px 24px rgba(59,37,48,0.08);
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:88px 0;}
+  .section-head{
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    gap:40px;
+    margin-bottom:56px;
+    border-top:1px solid rgba(173,138,82,0.35);
+    padding-top:22px;
+  }
+  .section-head h2{
+    font-size:clamp(1.8rem,3vw,2.4rem);
+  }
+  .section-head p{
+    color:rgba(59,37,48,0.78);
+    max-width:52ch;
+    align-self:end;
+  }
+
+  /* ---------- HERRAMIENTAS ---------- */
+  .tool{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:36px;
+    padding:34px 0;
+    border-bottom:1px solid rgba(173,138,82,0.28);
+    align-items:start;
+  }
+  .tool:first-of-type{border-top:1px solid rgba(173,138,82,0.28);}
+  .tool:nth-child(even) .tool-name{color:var(--rose);}
+  .tool-name{
+    font-family:'Fraunces', serif;
+    font-size:1.5rem;
+    font-style:italic;
+  }
+  .tool-role{
+    display:block;
+    font-family:'Work Sans', sans-serif;
+    font-style:normal;
+    font-size:0.78rem;
+    color:var(--gold);
+    margin-top:6px;
+  }
+  .tool-desc p{margin-bottom:10px; color:rgba(59,37,48,0.88); text-align:justify; hyphens:auto;}
+  .tool-example{
+    font-size:0.92rem;
+    color:var(--rose);
+    padding-left:14px;
+    border-left:2px solid var(--pink);
+  }
+
+  /* ---------- PRODUCTO ---------- */
+  .producto{background:var(--paper);}
+  .producto-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .producto-media{position:relative;}
+  .producto-media img{
+    width:100%;
+    display:block;
+    box-shadow:0 24px 50px rgba(59,37,48,0.18);
+  }
+  .producto-media .credit{
+    margin-top:14px;
+    font-size:0.78rem;
+    color:rgba(59,37,48,0.55);
+    font-style:italic;
+  }
+  .producto-copy h2{font-size:clamp(1.8rem,3vw,2.3rem); margin-bottom:18px;}
+  .producto-copy p{color:rgba(59,37,48,0.85); margin-bottom:18px; text-align:justify; hyphens:auto;}
+  .prompt-box{
+    background:var(--blush);
+    border:1px solid rgba(173,138,82,0.4);
+    padding:20px 22px;
+    font-size:0.88rem;
+    color:var(--ink);
+    line-height:1.65;
+  }
+  .prompt-box .label{
+    display:block;
+    font-size:0.72rem;
+    color:var(--gold);
+    margin-bottom:8px;
+  }
+
+  .brand-mark{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:30px;
+    padding-bottom:26px;
+    border-bottom:1px solid rgba(173,138,82,0.3);
+  }
+  .brand-mark img{
+    width:86px;
+    height:86px;
+    object-fit:contain;
+    background:var(--blush);
+    border:1px solid rgba(173,138,82,0.3);
+    padding:10px;
+  }
+  .brand-mark .brand-text .tagline{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.15rem;
+    color:var(--rose);
+  }
+  .brand-mark .brand-text .sub{
+    font-size:0.8rem;
+    color:var(--gold);
+    letter-spacing:0.03em;
+    margin-top:4px;
+  }
+
+  /* ---------- CAMPAÑA ---------- */
+  .campaign{background:var(--paper);}
+  .campaign-gallery{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+  }
+  .campaign-item.wide{grid-column:1 / -1;}
+  .campaign-item img{
+    width:100%;
+    display:block;
+    box-shadow:0 20px 40px rgba(59,37,48,0.15);
+  }
+  .campaign-item .cap{
+    margin-top:12px;
+    display:flex;
+    justify-content:space-between;
+    font-size:0.8rem;
+    color:rgba(59,37,48,0.6);
+  }
+  .campaign-item .cap .format{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--rose);
+    font-size:0.9rem;
+  }
+
+  /* ---------- REFLEXION / CONCLUSION ---------- */
+  .essay{
+    max-width:700px;
+    margin:0 auto;
+  }
+  .essay h2{
+    text-align:left;
+    margin-bottom:28px;
+  }
+  .essay p{
+    font-size:1.05rem;
+    color:rgba(59,37,48,0.9);
+    margin-bottom:20px;
+    text-align:justify;
+    hyphens:auto;
+  }
+  .essay p:first-of-type:first-letter{
+    font-family:'Fraunces', serif;
+    font-size:3.4rem;
+    float:left;
+    line-height:0.8;
+    padding-right:10px;
+    padding-top:6px;
+    color:var(--rose);
+  }
+  .divider{
+    width:60px; height:1px;
+    background:var(--gold);
+    margin:64px auto 0;
+  }
+  .conclusion{
+    background:var(--pink);
+  }
+  .conclusion .essay p:first-of-type:first-letter{color:var(--paper);}
+  .conclusion h2, .conclusion p{color:var(--ink);}
+
+  footer{
+    padding:48px 0 60px;
+    text-align:center;
+    font-size:0.82rem;
+    color:rgba(59,37,48,0.6);
+  }
+
+  @media (max-width: 760px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-visual{justify-self:center; margin-top:20px;}
+    .hero-visual img{width:100%;}
+    .section-head{grid-template-columns:1fr;}
+    .tool{grid-template-columns:1fr; gap:10px;}
+    .producto-grid{grid-template-columns:1fr;}
+    .campaign-gallery{grid-template-columns:1fr;}
+    .campaign-item.wide{grid-column:1;}
+    .brand-mark{flex-direction:column; align-items:flex-start;}
+    nav ul{gap:16px; font-size:0.8rem;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">Katherine Itzep <span>· Portafolio IA</span></div>
+    <ul>
+      <li><a href="#herramientas">Herramientas</a></li>
+      <li><a href="#producto">Producto</a></li>
+      <li><a href="#reflexion">Reflexión</a></li>
+      <li><a href="#conclusion">Conclusión</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="hero-eyebrow">Fundamentos de Inteligencia Artificial · Proyecto Final</div>
+      <h1>La IA como nueva <em>caja de herramientas</em> del diseño</h1>
+      <p class="lead">Un recorrido por cinco herramientas de inteligencia artificial aplicadas al diseño gráfico y la comunicación, y un producto creativo desarrollado a partir de ellas.</p>
+      <p class="lead">Portafolio digital elaborado como cierre del curso, documentando exploración, proceso y reflexión crítica.</p>
+      <div class="byline">Katherine Johana Itzep del Valle — Diseño Gráfico y Comunicación</div>
+    </div>
+    <div class="hero-visual">
+      <img src="anteojos.jpg" alt="Anteojos rosado pastel con patas doradas, producto creativo generado con IA">
+      <div class="tag">Producto creativo generado con IA — ver más abajo ↓</div>
+    </div>
+  </div>
+</header>
+
+<section id="herramientas">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Cinco herramientas, cinco maneras de pensar</h2>
+      <p>No todas las IA piensan igual: unas son mejores para redactar y estructurar ideas, otras para generar imágenes. Esta es mi exploración de cada una, aplicada a proyectos reales de mi carrera.</p>
+    </div>
+
+    <div class="tool">
+      <div class="tool-name">Claude<span class="tool-role">Razonamiento y redacción</span></div>
+      <div class="tool-desc">
+        <p>La usé como asistente de pensamiento crítico: para estructurar análisis de casos de este mismo curso y para pulir la redacción de conceptos de marca antes de presentarlos.</p>
+        <p class="tool-example">Ejemplo: ordenar los hallazgos y la narrativa de la propuesta visual de la cafetería Aurora antes de presentarla.</p>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="tool-name">ChatGPT<span class="tool-role">Lluvia de ideas</span></div>
+      <div class="tool-desc">
+        <p>Funciona muy bien para generar volumen de ideas rápido: nombres, conceptos de campaña, ángulos de comunicación que luego filtro y adapto con criterio propio.</p>
+        <p class="tool-example">Ejemplo: explorar conceptos de campaña para CodeKids, una marca ficticia de programación para niños.</p>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="tool-name">Gemini<span class="tool-role">Ideación y producto</span></div>
+      <div class="tool-desc">
+        <p>La usé como punto de partida para dos cosas: generar la fotografía del producto a partir de una descripción detallada, y pensar el concepto y el copy de la campaña ("feelings, vibes, Life style.") antes de convertirlo en piezas visuales.</p>
+        <p class="tool-example">Ejemplo: los anteojos rosado pastel con patas doradas y el tagline de la campaña "LA Glasses Pink".</p>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="tool-name">Adobe Firefly<span class="tool-role">Edición generativa</span></div>
+      <div class="tool-desc">
+        <p>Integrada en Photoshop e Illustrator, es útil para probar variaciones de color y relleno generativo directamente sobre piezas ya diseñadas, sin salir del flujo de trabajo habitual.</p>
+        <p class="tool-example">Ejemplo: probar la paleta de marca de Aurora (crema, dorado, marrón) sobre distintos fondos de mockup.</p>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="tool-name">Nano Banana<span class="tool-role">Generación de imagen</span></div>
+      <div class="tool-desc">
+        <p>Es el modelo de generación de imagen de Gemini. Lo usé para producir el logo y las piezas visuales de la campaña, generando variaciones de una misma idea de marca hasta encontrar la versión más limpia y coherente.</p>
+        <p class="tool-example">Ejemplo: el logo de "LA Glasses" y las piezas de la campaña que se muestran en la sección de producto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="producto" class="producto">
+  <div class="wrap">
+    <div class="producto-grid">
+      <div class="producto-media">
+        <img src="anteojos.jpg" alt="Anteojos de sol rosado pastel con patas delgadas y puntas doradas">
+        <div class="credit">Producto creativo — generado con Gemini</div>
+      </div>
+      <div class="producto-copy">
+        <div class="brand-mark">
+          <img src="logo.jpg" alt="Logo de la marca LA Glasses, Los Angeles">
+          <div class="brand-text">
+            <div class="tagline">"feelings, vibes, Life style."</div>
+            <div class="sub">LA GLASSES — LOS ANGELES</div>
+          </div>
+        </div>
+        <h2>Anteojos rosado pastel</h2>
+        <p>Como producto creativo diseñé una pequeña identidad de marca para unos anteojos de sol: montura rosado pastel, patas delgadas y minimalistas con puntas en dorado metálico, fotografiados sobre un fondo texturizado en el mismo tono. La pieza busca un aesthetic sofisticado y editorial, cercano al lenguaje visual de una marca de accesorios de lujo con espíritu californiano.</p>
+        <p>El producto lo generé con <strong>Gemini</strong>, mientras que el logo y las piezas de campaña que siguen a continuación las generé con <strong>Nano Banana</strong>, el modelo de generación de imagen de Gemini, partiendo del concepto y el copy que primero pensé en Gemini como conversación.</p>
+        <div class="prompt-box">
+          <span class="label">Prompt utilizado (producto)</span>
+          Fotografía realista de producto de unos anteojos de sol, en color rosado pastel, con patas delgadas y minimalistas y las puntas en color dorado metálico brillante. Fondo con textura suave en tono pastel, iluminación suave tipo estudio fotográfico, ángulo de tres cuartos, alta resolución, estilo comercial de producto.
+        </div>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-top:70px;">
+      <h2>Campaña "LA Glasses Pink"</h2>
+      <p>A partir del producto y el logo, extendí la identidad a una mini campaña publicitaria con el tagline <em>"feelings, vibes, Life style."</em>, generada con Nano Banana y pensada para convivir entre redes sociales y espacios urbanos.</p>
+    </div>
+    <div class="campaign-gallery">
+      <div class="campaign-item">
+        <img src="campana-story.jpg" alt="Story de Instagram de la campaña LA Glasses Pink en Santa Monica Pier">
+        <div class="cap"><span class="format">Story</span><span>Instagram</span></div>
+      </div>
+      <div class="campaign-item">
+        <img src="campana-post.jpg" alt="Post de Instagram de la campaña LA Glasses Pink al atardecer">
+        <div class="cap"><span class="format">Post</span><span>Instagram</span></div>
+      </div>
+      <div class="campaign-item">
+        <img src="campana-parada-bus.jpg" alt="Anuncio de la campaña LA Glasses Pink en una parada de autobús">
+        <div class="cap"><span class="format">Parada de autobús</span><span>Vía pública</span></div>
+      </div>
+      <div class="campaign-item wide">
+        <img src="campana-espectacular.jpg" alt="Espectacular publicitario de la campaña LA Glasses Pink sobre una carretera al atardecer">
+        <div class="cap"><span class="format">Espectacular</span><span>Vía pública</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reflexion">
+  <div class="wrap essay">
+    <h2>Reflexión</h2>
+    <p>Explorar estas cinco herramientas me hizo ver que la inteligencia artificial no reemplaza el criterio de diseño, lo acelera. El mayor beneficio que encontré fue el tiempo: lo que antes me tomaba horas de bocetos o de redacción de conceptos, ahora puedo explorarlo en minutos y llegar más rápido a una versión con la que sí vale la pena seguir trabajando.</p>
+    <p>También noté un beneficio menos obvio: estas herramientas me obligan a describir mis ideas con más precisión. Un prompt vago da un resultado vago, así que escribir para IA terminó siendo un ejercicio de claridad conceptual tan útil como el resultado visual en sí.</p>
+    <p>El reto principal fue no quedarme con la primera propuesta que la IA entrega. Es fácil conformarse con algo que "se ve bien" sin preguntarse si responde de verdad al público o a la marca. Otro reto fue la dependencia de un buen prompt: la calidad del resultado depende directamente de qué tan bien logro traducir una idea de diseño en palabras, una habilidad que todavía estoy desarrollando.</p>
+  </div>
+</section>
+
+<section id="conclusion" class="conclusion">
+  <div class="wrap essay">
+    <h2>Conclusión</h2>
+    <p>Este proyecto me deja claro que mi rol como futura diseñadora de comunicación no cambia por usar IA, pero sí cambia mi manera de trabajar: paso más tiempo curando y afinando, y menos tiempo generando desde cero. Las herramientas que exploré tienen fortalezas distintas y aprender cuál usar para cada etapa del proceso —ideación, redacción, imagen o edición— es en sí mismo parte de mi formación como diseñadora.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Portafolio Digital — Fundamentos de Inteligencia Artificial · Universidad Galileo
+  </div>
+</footer>
+
+</body>
+</html>
